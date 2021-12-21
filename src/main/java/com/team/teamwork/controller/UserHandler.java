@@ -32,4 +32,15 @@ public class UserHandler {
             return result;
         }
     }
+    @GetMapping("/getname/{username}")
+    public String getname(@PathVariable("username") String username){
+        String result = "error";
+        try {
+            result = userRepository.findById(username).get().getName();
+        }catch (Exception e){
+
+        }finally {
+            return result;
+        }
+    }
 }
