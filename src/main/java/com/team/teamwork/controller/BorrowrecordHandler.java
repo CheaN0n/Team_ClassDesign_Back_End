@@ -2,7 +2,9 @@ package com.team.teamwork.controller;
 
 import com.team.teamwork.entity.Book;
 import com.team.teamwork.entity.Borrowrecord;
+import com.team.teamwork.entity.User;
 import com.team.teamwork.repository.BorrowrecordRepository;
+import com.team.teamwork.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +48,7 @@ public class BorrowrecordHandler {
         Date date1 = sdf.parse(br.getDdl());
         Date date2 = new Date();
         if (date2.after(date1)){
+            borrowrecordRepository.deleteById(id);
             return "outdate";
         }
 

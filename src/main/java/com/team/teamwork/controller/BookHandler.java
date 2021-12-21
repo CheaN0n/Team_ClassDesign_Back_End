@@ -42,4 +42,11 @@ public class BookHandler {
             return "error";
         }
     }
+    @PostMapping("/freebook/{id}")
+    public void freebook(@PathVariable("id") String id){
+        Book book = bookRepository.findById(id).get();
+        book.setFlag(1);
+        bookRepository.save(book);
+
+    }
 }

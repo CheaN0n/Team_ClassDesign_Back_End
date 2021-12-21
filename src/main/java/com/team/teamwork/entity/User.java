@@ -15,6 +15,8 @@ public class User {
     private String name;
     //密码
     private String password;
+    //违约次数
+    private Integer disobeycount;
     //电话号码
     private String tel;
     //电子邮箱
