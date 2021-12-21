@@ -69,7 +69,7 @@ public class UserHandler {
         disobeyuser.setDisobeycount(++pre);
         userRepository.save(disobeyuser);
     }
-    @PostMapping("/saveinfo/{username}")
+    @PostMapping("/saveinfo")
     public String saveinfo(@RequestBody User user){
         User targetuser = userRepository.findById(user.getUsername()).get();
         targetuser.setBirthday(user.getBirthday());
