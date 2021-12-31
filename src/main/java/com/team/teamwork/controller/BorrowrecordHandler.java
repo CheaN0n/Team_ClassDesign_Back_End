@@ -63,4 +63,26 @@ public class BorrowrecordHandler {
             return "error";
         }
     }
+    @GetMapping("/getapply")
+    public List<Borrowrecord> getapply() {
+        List<Borrowrecord> applications = new ArrayList<Borrowrecord>();
+        List<Borrowrecord> all = borrowrecordRepository.findAll();
+        for (Borrowrecord br : all){
+            if (br.getFlag()==1){
+                applications.add(br);
+            }
+        }
+        return applications;
+    }
+    @DeleteMapping("/deleterecord/{id}")
+    public String deleterecord(@PathVariable("id") Integer id){
+        String result = "success";
+        try {
+            borrowrecordRepository.deleteById(id);
+        }catch (Exception e){
+            result = "error";
+        }finally{
+            return result;
+        }
+    }
 }

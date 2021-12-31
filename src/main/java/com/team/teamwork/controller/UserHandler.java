@@ -36,9 +36,16 @@ public class UserHandler {
 
     @GetMapping("/login/{id}")
     public String login(@PathVariable("id") String username){
-        String result = "error";
-        result = userRepository.findById(username).get().getPassword();
-        return result;
+        String result = "nofounduser";
+        try {
+            result = userRepository.findById(username).get().getPassword();
+        }catch (Exception e){
+
+        }finally {
+            return result;
+        }
+
+
 
     }
     @GetMapping("/getname/{username}")
